@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "lib",
+    "strict": true,
+    "composite": true,
+    "esModuleInterop": true,
+
+    "rootDir": "src",
+    // "outDir": "build/static/js",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+    },
+    "allowJs": true,
+    "sourceMap": false,
+    "noEmitOnError": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": true,
+  },
+  "include": [
+    "./src"
+  ]
+}
