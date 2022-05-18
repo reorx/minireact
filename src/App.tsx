@@ -26,7 +26,7 @@ export function App() {
         <article>
           <header>
             <h1 id="anchor-top">Hello World</h1>
-            <p>This is minireact</p>
+            <p>This is minireact.</p>
           </header>
           <h2>App Info</h2>
           <section>

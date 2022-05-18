@@ -18,16 +18,39 @@ let config = {
   output: {
     path: destDir,
     filename: '[name].bundle.js',
+    publicPath: '/',  // this lets HtmlWebpackPlugin inject script with absolute path
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
         exclude: /node_modules/,
-        options: {
-          projectReferences: true,
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                'lodash',
+                ["import", {
+                  libraryName: 'tabler-icons-react',
+                  libraryDirectory: 'dist/icons',
+                }],
+                isDevelopment && 'react-refresh/babel'
+              ].filter(Boolean),
+              presets: [
+                ["@babel/preset-env", {
+                  targets: {
+                    browsers: '> 5%',  // this removes core-js
+                  },
+                  corejs: 3,
+                  useBuiltIns: 'usage',
+                }],
+                "@babel/preset-typescript",
+                ["@babel/preset-react", {"runtime": "automatic"}]
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,
@@ -62,6 +85,9 @@ if (useAnalyze) {
     })
   )
 } else if (isDevelopment) {
+  const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+  // only assign first level properties
   Object.assign(config, {
     devtool: 'cheap-module-source-map',
     mode: 'development',
@@ -70,9 +96,12 @@ if (useAnalyze) {
       port: 3000,
       hot: true,
       historyApiFallback: true,
-      // allowedHosts: [],
+      // allowedHosts: [],  // add hosts here if you visite the site by a domain (e.g. from /etc/hosts)
     },
   })
+  config.plugins.push(
+    new ReactRefreshWebpackPlugin(),
+  )
 } else {
   Object.assign(config, {
     mode: 'production',
