@@ -1,6 +1,7 @@
 import '@picocss/pico/css/pico.min.css';  // keep
 
 import { css } from '@emotion/react';
+import { Ballon } from 'tabler-icons-react';
 
 import config, { APP_ENV } from './config';
 
@@ -13,7 +14,7 @@ export function App() {
             <li><a href="#" className="secondary">…</a></li>
           </ul>
           <ul>
-            <li><strong>Minireact</strong></li>
+            <li><Ballon /><strong>Minireact</strong></li>
           </ul>
           <ul>
             <li><a href="#" className="secondary">…</a></li>
