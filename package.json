@@ -1,7 +1,7 @@
 {
   "name": "minireact",
   "version": "0.1.0",
-  "description": "minimal react project boilerplate",
+  "description": "A minimal react project boilerplate",
   "main": "src/index.ts",
   "scripts": {
     "start": "webpack serve",
@@ -12,7 +12,7 @@
     "serve-build": "python3 -m http.server --directory build 3001",
     "clean": "rm -rf dist build lib"
   },
-  "author": "",
+  "author": "Reorx <novoreorx@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -28,19 +28,22 @@
     "@babel/preset-typescript": "^7.17.12",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.6",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-import": "^1.13.5",
     "babel-plugin-lodash": "^3.3.4",
     "core-js": "^3.22.5",
     "css-loader": "^6.7.1",
+    "eslint-plugin-react": "^7.29.4",
     "html-webpack-plugin": "^5.5.0",
     "react-refresh": "^0.13.0",
     "style-loader": "^3.3.1",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1",
-    "webpack-merge": "^5.8.0"
+    "webpack-dev-server": "^4.8.1"
   }
 }
