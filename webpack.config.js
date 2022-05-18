@@ -18,7 +18,7 @@ let config = {
   output: {
     path: destDir,
     filename: '[name].bundle.js',
-    publicPath: '/',  // this lets HtmlWebpackPlugin inject script with absolute path
+    // publicPath: '/',  // this lets HtmlWebpackPlugin inject script with absolute path. Commonly used with react-router, in GitHub pages, it should not be used.
   },
   module: {
     rules: [
