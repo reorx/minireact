@@ -1,6 +1,6 @@
 const webpack = require('webpack')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const path = require('path')
 const rootDir = __dirname
@@ -27,30 +27,12 @@ let config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              plugins: [
-                'lodash',
-                ["import", {
-                  libraryName: 'tabler-icons-react',
-                  libraryDirectory: 'dist/icons',
-                }],
-                isDevelopment && 'react-refresh/babel'
-              ].filter(Boolean),
-              presets: [
-                ["@babel/preset-env", {
-                  targets: {
-                    browsers: '> 5%',  // this removes core-js
-                  },
-                  corejs: 3,
-                  useBuiltIns: 'usage',
-                }],
-                "@babel/preset-typescript",
-                ["@babel/preset-react", {"runtime": "automatic"}]
-              ],
-            },
-          },
-        ],
+            loader: 'ts-loader'
+          }
+        ]
+        // options: {
+        //   projectReferences: true,
+        // }
       },
       {
         test: /\.css$/i,
@@ -60,7 +42,7 @@ let config = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    plugins: [new TsconfigPathsPlugin()],
+    //plugins: [new TsconfigPathsPlugin()],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -85,7 +67,6 @@ if (useAnalyze) {
     })
   )
 } else if (isDevelopment) {
-  const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
   // only assign first level properties
   Object.assign(config, {
@@ -99,9 +80,6 @@ if (useAnalyze) {
       // allowedHosts: [],  // add hosts here if you visite the site by a domain (e.g. from /etc/hosts)
     },
   })
-  config.plugins.push(
-    new ReactRefreshWebpackPlugin(),
-  )
 } else {
   Object.assign(config, {
     mode: 'production',

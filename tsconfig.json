@@ -10,7 +10,6 @@
     "esModuleInterop": true,
 
     "rootDir": "src",
-    // "outDir": "build/static/js",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -20,8 +19,6 @@
     "noEmitOnError": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": true,
   },
   "include": [
     "./src"
